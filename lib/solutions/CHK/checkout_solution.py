@@ -20,7 +20,29 @@ prices ={
     "C": {
         "price": 20,
         "special_offer":[]
-    }
+    },
+    "D": {
+        "price": 15,
+        "special_offer":[]
+    },
+    "E": {
+        "price": 40,
+        "special_offer":[
+            {"quant": 2, "free_item": "B"}
+        ]
+    },
+    "F": {
+        "price": 10,
+        "special_offer":[
+            {"quant": 2, "free_item": "F"}
+    },
+    "G":{
+        "price": 20,
+        "special_offer":[]
+    },
+    "H":{
+        "price": 10,
+        "special"
 }
 
 item_dict = {}
@@ -57,6 +79,7 @@ def checkout(skus):
             sum += quant * 10
 
     return sum
+
 
 
 
