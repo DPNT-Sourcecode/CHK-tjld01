@@ -198,10 +198,11 @@ def checkout(skus):
                 break
             print(sku_dict)
             if sku in sku_dict:
-                to_reduce = sku_dict[sku]%3 - reminder
-                sku_dict[sku] -= (sku_dict[sku]-counter)%3
-
-                print(sku_dict)
+                to_reduce = (sku_dict[sku] - reminder)%3
+                print(sku_dict[sku], to_reduce)
+                sku_dict[sku] -= to_reduce
+                reminder = 3 - to_reduce
+                print(reminder)
             total_price += bundles * price
 
 
@@ -227,6 +228,7 @@ def checkout(skus):
     return total_price
 
 print(checkout("SSSZ"))
+
 
 
 
