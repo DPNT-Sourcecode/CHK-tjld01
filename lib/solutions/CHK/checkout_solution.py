@@ -6,7 +6,7 @@ def checkout(skus):
     sum = 0
     item_dict = {}
     for item in skus:
-        if item not in "ABCD":
+        if item not in "ABCDE":
             return -1
         if item == "A":
             item_dict["A"] = item_dict.get("A", 0) + 1
@@ -17,17 +17,18 @@ def checkout(skus):
         elif item == "D":
             item_dict["D"] = item_dict.get("D", 0) + 1
 
-    for key, value in item_dict.items():
+    for key, quant in item_dict.items():
         if key == "A":
-            sum += (value // 3) * 130 + (value % 3) * 50
+            sum += (quant // 5) * 200 + ((quant % 5) // 3)*130 (quant % 3) * 50
         elif key == "B":
-            sum += (value // 2) * 45 + (value % 2) * 30
+            sum += (quant // 2) * 45 + (quant % 2) * 30
         elif key == "C":
-            sum += value * 20
+            sum += quant * 20
         elif key == "D":
-            sum += value * 15
+            sum += quant * 15
 
     return sum
+
 
 
 
