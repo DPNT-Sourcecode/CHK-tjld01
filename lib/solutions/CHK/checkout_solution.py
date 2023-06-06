@@ -186,8 +186,10 @@ def checkout(skus):
                 "quant": sku_dict.get(sku,0),
                 "price": prices[sku]["price"]
             }
-        sorted_bundle_dict = sorted(bundle_dict.items(), key=lambda x: x[1]["price"], reverse=True)
-        for 
+        sorted_bundle_dict = dict(sorted(bundle_dict.items(), key=lambda x: x[1]["price"], reverse=True))
+        bundle_quant = sum(item['quant'] for item in my_dict.values())
+        while(bundle_quant // 3 > 0)
+
 
 
     # Calculate total price for each sku considering offers
@@ -211,11 +213,3 @@ def checkout(skus):
     return total_price
 
 print(checkout("STXYZ"))
-
-
-
-
-
-
-
-
