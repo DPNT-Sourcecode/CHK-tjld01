@@ -167,8 +167,8 @@ def checkout(skus):
             if quant >= offer_quant and offer_quant > 0:
                 offer_total_price = quant//offer_quant * offer_price
                 if offer_total_price > 0:
-                    print(offer_items)
-                    sku_dict[sku] -= offer_items
+                    sku_dict[sku] -= offer_quant * (quant//offer_quant)
+                    print(sku_dict[sku])
                     total_price += offer_total_price
                 if free_item:
                     free_items = quant // offer_quant
@@ -182,12 +182,3 @@ def checkout(skus):
 
 
 print(checkout("AAAAA"))
-
-
-
-
-
-
-
-
-
