@@ -179,6 +179,3 @@ def checkout(skus):
 
 
 
-print(checkout("AAAAABBBFFFHHHHHHHHHH"))
-
-
