@@ -151,7 +151,7 @@ def checkout(skus):
     sku_dict = {}
     total_price = 0
     sku_pattern = r"[A-Z]"
-    sku_bundles = ["STXYZ"]
+    sku_bundles = [("STXYZ",45)]
 
     # Count occurenses of each sku
     for sku in skus:
@@ -179,7 +179,7 @@ def checkout(skus):
                     sku_dict[sku_free_item] -= free_items_to_substract
 
 
-    for sku_bundle in sku_bundles:
+    for sku_bundle, price in sku_bundles:
         bundle_dict = {}
         for sku in sku_bundle:
             bundle_dict[sku] = {
@@ -190,14 +190,13 @@ def checkout(skus):
         bundle_items = sum(item['quant'] for item in sorted_bundle_dict.values())
         bundle_offer_quant = 0
         sku_it = iter(sorted_bundle_dict)
-        while (bundle_items / 3 > 1):
+        while (bundle_items / 3 >= 1):
             print(sku_dict)
             sku = next(sku_it)
             bundle_items -= sku_dict[sku]
             sku_dict[sku] = 0
             bundle_offer_quant += sku_dict[sku]
-        print(sku_dict)
-        print(bundle_offer_quant)
+        total_price += bundle_offer_quant * price
 
 
 
@@ -222,6 +221,7 @@ def checkout(skus):
     return total_price
 
 print(checkout("STXYZ"))
+
 
 
 
