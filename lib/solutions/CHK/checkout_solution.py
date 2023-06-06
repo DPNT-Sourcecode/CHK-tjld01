@@ -12,7 +12,7 @@ prices ={
         ]
     },
     "B": {
-        "price": 50,
+        "price": 30,
         "special_offer":[
             {"quant": 2, "price":45},
         ]
@@ -151,24 +151,22 @@ def checkout(skus):
         sku_dict[sku] = sku_dict.get(sku, 0) + 1
 
     # Calculate total price based on prices and special offers
-    for sku, quant in sku_dict.items():
+    for sku in sku_dict:
 
         price = prices[sku]["price"]
         special_offer = prices[sku]["special_offer"]
 
         # Check if there is any special offer applicable
         for offer in special_offer:
+            quant = sku_dict[sku]
             offer_quant = offer.get("quant",0)
             offer_price = offer.get("price",0)
             free_item = offer.get("free_item", None)
 
-            print(offer_quant, offer_price, free_item)
-            print(quant)
             if quant >= offer_quant and offer_quant > 0:
                 offer_total_price = quant//offer_quant * offer_price
                 if offer_total_price > 0:
                     sku_dict[sku] -= offer_quant * (quant//offer_quant)
-                    print(sku_dict[sku])
                     total_price += offer_total_price
                 if free_item:
                     free_items = quant // offer_quant
@@ -181,4 +179,5 @@ def checkout(skus):
 
 
 
-print(checkout("AAAAA"))
+print(checkout("AAAAABBBFFFHHHH"))
+
