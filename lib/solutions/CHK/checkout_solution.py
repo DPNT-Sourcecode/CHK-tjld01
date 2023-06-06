@@ -171,7 +171,12 @@ def checkout(skus):
 
 
     for sku_bundle in sku_bundles:
+        bundle_dict = {}
         for sku in sku_bundle:
+            bundle_dict[sku] = {
+                "quant": sku_dict.get(sku,0),
+                "price": prices[sku]["price"]
+            }
 
 
     # Calculate total price for each sku considering offers
@@ -193,6 +198,7 @@ def checkout(skus):
         total_price += sku_dict[sku] * price
 
     return total_price
+
 
 
 
