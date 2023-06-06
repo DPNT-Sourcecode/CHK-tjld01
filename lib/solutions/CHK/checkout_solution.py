@@ -161,24 +161,22 @@ def checkout(skus):
             quant = sku_dict[sku]
             offer_quant = offer.get("quant",0)
             offer_price = offer.get("price",0)
-            free_item = offer.get("free_item", None)
+            sku_free_item = offer.get("free_item", None)
 
             if quant >= offer_quant and offer_quant > 0:
                 offer_total_price = quant//offer_quant * offer_price
                 if offer_total_price > 0:
                     sku_dict[sku] -= offer_quant * (quant//offer_quant)
                     total_price += offer_total_price
-                if free_item:
+                if sku_free_item in sku_dict:
                     free_items = quant // offer_quant
-                    if sku_dict[free_item]:
-                        diff = sku_dict.get(free_item,0) - free_items
-                        sku_dict[free_item] = diff if diff > 0 else 0
+                    diff = sku_dict.get(sku_free_item,0) - free_items
+                    sku_dict[sku_free_item] = diff if diff > 0 else 0
 
         total_price += sku_dict[sku] * price
 
     return total_price
 
-print(checkout("EE"))
 
 
 
