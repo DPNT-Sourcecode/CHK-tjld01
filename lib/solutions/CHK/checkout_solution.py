@@ -34,7 +34,7 @@ prices ={
     "F": {
         "price": 10,
         "special_offer":[
-            {"quant": 2, "free_item": "F"}
+            {"quant": 3, "free_item": "F"}
         ]
     },
     "G":{
@@ -189,3 +189,4 @@ def checkout(skus):
     return total_price
 
 print(checkout("FF"))
+
