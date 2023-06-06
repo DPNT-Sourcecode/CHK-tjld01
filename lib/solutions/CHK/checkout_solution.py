@@ -35,6 +35,7 @@ prices ={
         "price": 10,
         "special_offer":[
             {"quant": 2, "free_item": "F"}
+        ]
     },
     "G":{
         "price": 20,
@@ -89,6 +90,7 @@ prices ={
         "price": 30,
         "special_offer":[
             {"quant": 3, "price":80}
+        ]
     },
     "R":{
         "price": 50,
@@ -100,12 +102,45 @@ prices ={
         "price": 30,
         "special_offer":[]
     },
-    
-
+    "T":{
+        "price": 20,
+        "special_offer":[]
+    },
+    "U":{
+        "price": 40,
+        "special_offer":[
+            {"quant": 3, "free_item": "U"}
+        ]
+    },
+    "V":{
+        "price": 50,
+        "special_offer":[
+            {"quant": 2, "price":90},
+            {"quant": 3, "price":130}
+        ]
+    },
+    "W":{
+        "price": 20,
+        "special_offer":[]
+    },
+    "X":{
+        "price": 90,
+        "special_offer":[]
+    },
+    "Y":{
+        "price": 10,
+        "special_offer":[]
+    },
+    "Z":{
+        "price": 50,
+        "special_offer":[]
     }
 }
 
+print(prices)
+
 item_dict = {}
+total_price = 0
 pattern = r"[A-Z]"
 def checkout(skus):
     for item in skus:
@@ -139,6 +174,10 @@ def checkout(skus):
             sum += quant * 10
 
     return sum
+
+
+print(checkout("AAAAA"))
+
 
 
 
