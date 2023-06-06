@@ -191,11 +191,11 @@ def checkout(skus):
         bundle_quant = sum(item['quant'] for item in sorted_bundle_dict.values())
         bundle_offer_quant = 0
         sku_it = iter(sorted_bundle_dict)
-        while bundle_quant >= 3:
+        while True:
             sku = next(sku_it, None)
             if sku is None:
                 break
-            if sku in sku_dict:
+            if sku in sku_dict and bundle_quant+bundle_offer_quant >= 3:
                 bundle_quant -= sku_dict[sku]
                 bundle_offer_quant += sku_dict[sku]
                 sku_dict[sku] = 0
@@ -223,7 +223,8 @@ def checkout(skus):
 
     return total_price
 
-print(checkout("T"))
+print(checkout("S"))
+
 
 
 
