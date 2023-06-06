@@ -195,7 +195,7 @@ def checkout(skus):
             sku = next(sku_it, None)
             if sku is None:
                 break
-            if sku in sku_dict and bundle_quant+bundle_offer_quant >= 3:
+            if sku in sku_dict:
                 bundle_quant -= sku_dict[sku]
                 bundle_offer_quant += sku_dict[sku]
                 sku_dict[sku] = 0
@@ -223,7 +223,8 @@ def checkout(skus):
 
     return total_price
 
-print(checkout("S"))
+print(checkout("ZZZS"))
+
 
 
 
