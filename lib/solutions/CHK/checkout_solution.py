@@ -193,10 +193,10 @@ def checkout(skus):
         sku_it = iter(sorted_bundle_dict)
         while (bundle_items / 3 >= 1):
             sku = next(sku_it)
-            bundle_items -= sku_dict[sku]
-            bundle_offer_quant += sku_dict[sku]
+            bundle_items -= sku_dict.get(sku,0)
+            bundle_offer_quant += sku_dict.get(sku,0)
             sku_dict[sku] = 0
-        
+
         total_price += (bundle_offer_quant//3) * price
 
 
@@ -221,7 +221,8 @@ def checkout(skus):
 
     return total_price
 
-print(checkout("STXYZ"))
+print(checkout("SSS"))
+
 
 
 
