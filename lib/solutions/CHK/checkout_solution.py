@@ -170,14 +170,16 @@ def checkout(skus):
                     total_price += offer_total_price
                 if sku_free_item in sku_dict:
                     free_items = quant // offer_quant
-                    diff = sku_dict.get(sku_free_item,0) - free_items
+                    free_items_to_substract = sku_dict[sku_free_item] - free_items
                     sku_dict[sku_free_item] = diff if diff > 0 else 0
+                    total_price -= free_items
 
         total_price += sku_dict[sku] * price
 
     return total_price
 
 print(checkout("BEBEEE"))
+
 
 
 
