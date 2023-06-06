@@ -57,9 +57,9 @@ prices ={
         "special_offer":[]
     },
     "K":{
-        "price": 80,
+        "price": 70,
         "special_offer":[
-            {"quant": 2, "price":150}
+            {"quant": 2, "price":120}
         ]
     },
     "L":{
@@ -99,7 +99,7 @@ prices ={
         ]
     },
     "S":{
-        "price": 30,
+        "price": 20,
         "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXYZ"}
     },
     "T":{
@@ -124,15 +124,15 @@ prices ={
         "special_offer":[]
     },
     "X":{
-        "price": 90,
+        "price": 17,
         "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXYZ"}
     },
     "Y":{
-        "price": 10,
+        "price": 20,
         "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXYZ"}
     },
     "Z":{
-        "price": 50,
+        "price": 21,
         "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXYZ"}
     }
 }
@@ -198,6 +198,7 @@ def checkout(skus):
         total_price += sku_dict[sku] * price
 
     return total_price
+
 
 
 
