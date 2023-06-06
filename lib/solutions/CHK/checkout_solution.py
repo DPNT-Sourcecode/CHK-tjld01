@@ -6,7 +6,20 @@ import re
 prices ={
     "A":{
         "price": 50,
-        "special_offer"
+        "special_offer":[
+            {"quant": 3, "price":130},
+            {"quant": 5, "price": 200}
+        ]
+    },
+    "B": {
+        "price": 50,
+        "special_offer":[
+            {"quant": 2, "price":45},
+        ]
+    },
+    "C": {
+        "price": 20,
+        "special_offer":[]
     }
 }
 
@@ -44,5 +57,6 @@ def checkout(skus):
             sum += quant * 10
 
     return sum
+
 
 
