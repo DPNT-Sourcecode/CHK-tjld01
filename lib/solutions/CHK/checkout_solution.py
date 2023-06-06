@@ -150,7 +150,7 @@ def checkout(skus):
             return -1
         sku_dict[sku] = sku_dict.get(sku, 0) + 1
 
-    # Check offers for free items
+    # Check offers for free items and reduce list
     for sku in sku_dict:
 
         price = prices[sku]["price"]
@@ -168,7 +168,9 @@ def checkout(skus):
                 if free_items_to_substract > 0:
                     sku_dict[sku_free_item] -= free_items_to_substract
 
-    # Check offers for bundles same items
+
+
+    # Calculate total price with bundles considered
     for sku in sku_dict:
         price = prices[sku]["price"]
         special_offer = prices[sku]["special_offer"]
@@ -184,11 +186,15 @@ def checkout(skus):
                 if offer_total_price > 0:
                     sku_dict[sku] -= offer_quant * (quant//offer_quant)
                     total_price += offer_total_price
+                # Check if there is any bundle applicable
+                if sku_dict[sku] > 0 and "bundle" in offer:
+                    
 
 
         total_price += sku_dict[sku] * price
 
     return total_price
+
 
 
 
