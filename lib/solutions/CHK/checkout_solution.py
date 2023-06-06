@@ -19,8 +19,12 @@ def checkout(skus):
         elif item == "E":
             item_dict["E"] = item_dict.get("E", 0) + 1
 
-    if item_dict.get("E", 0) >= 2 and :
+    # Reduce Quantity of Free Items
+    if item_dict["E"] >= 2 and item_dict["B"] > 0:
+        if item_dict["E"]//2 >= item_dict["B"]:
+            item_dict["B"] -= 
 
+    # Calculate Checkout
     for key, quant in item_dict.items():
         if key == "A":
             sum += (quant // 5) * 200 + ((quant % 5) // 3)*130 ((quant % 5) % 3) * 50
@@ -32,8 +36,6 @@ def checkout(skus):
             sum += quant * 15
         elif key == "E":
             sum += quant * 40
-            if quant >= 2 and item_dict.get("B", 0) > 0:
-
-
 
     return sum
+
