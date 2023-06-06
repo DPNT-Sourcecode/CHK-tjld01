@@ -150,9 +150,6 @@ def checkout(skus):
             return -1
         sku_dict[sku] = sku_dict.get(sku, 0) + 1
 
-
-
-    # Calculate total price based on prices and special offers
     for sku in sku_dict:
 
         price = prices[sku]["price"]
@@ -168,8 +165,6 @@ def checkout(skus):
                 diff = sku_dict[sku_free_item] - free_items
                 free_items_to_substract = free_items if diff >= 0 else 0
                 sku_dict[sku_free_item] -= free_items_to_substract
-
-
 
     for sku in sku_dict:
 
@@ -191,6 +186,8 @@ def checkout(skus):
         total_price += sku_dict[sku] * price
 
     return total_price
+
+print(checkout("STX"))
 
 
 
