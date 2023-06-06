@@ -165,7 +165,11 @@ def checkout(skus):
             if offer_quant > 0:
                 offer_items = quant // offer_quant
                 offer_price = offer_items * offer_price
-                sku_dict[sku] =
+                sku_dict[sku] -= offer_items
+                total_price += offer_price
+            if free_item:
+                free_items = quant // offer_quant
+                sku_dict[free_item] 
         # if sku == "A":
         #     total_price += (quant // 5) * 200 + ((quant % 5) // 3)*130 + ((quant % 5) % 3) * 50
         # elif sku == "B":
@@ -185,5 +189,6 @@ def checkout(skus):
 
 
 print(checkout("AAAAA"))
+
 
 
