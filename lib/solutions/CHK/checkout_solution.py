@@ -7,8 +7,8 @@ prices ={
     "A":{
         "price": 50,
         "special_offer":[
-            {"quant": 3, "price":130},
-            {"quant": 5, "price": 200}
+            {"quant": 5, "price": 200},
+            {"quant": 3, "price":130}
         ]
     },
     "B": {
@@ -44,8 +44,8 @@ prices ={
     "H":{
         "price": 10,
         "special_offer":[
-            {"quant": 5, "price":45},
-            {"quant": 10, "price": 80}
+            {"quant": 10, "price": 80},
+            {"quant": 5, "price":45}
         ]
     },
     "I":{
@@ -115,8 +115,8 @@ prices ={
     "V":{
         "price": 50,
         "special_offer":[
-            {"quant": 2, "price":90},
-            {"quant": 3, "price":130}
+            {"quant": 3, "price":130},
+            {"quant": 2, "price":90}
         ]
     },
     "W":{
@@ -162,6 +162,8 @@ def checkout(skus):
             offer_price = offer.get("price",0)
             free_item = offer.get("free_item", None)
 
+            print(offer_quant, offer_price, free_item)
+
             if offer_quant > 0:
                 offer_items = quant // offer_quant
                 offer_total_price = offer_items * offer_price
@@ -172,7 +174,8 @@ def checkout(skus):
                     free_items = quant // offer_quant
                     diff = sku_dict[free_item] - free_items
                     sku_dict[free_item] = diff if diff > 0 else 0
-
+            print(total_price)
+            print(sku_dict)
         print(sku_dict)
         print(total_price)
         total_price += sku_dict[sku] * price
@@ -182,6 +185,7 @@ def checkout(skus):
 
 
 print(checkout("AAAAA"))
+
 
 
 
