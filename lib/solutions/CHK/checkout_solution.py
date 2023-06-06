@@ -1,5 +1,3 @@
-
-
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
@@ -27,7 +25,7 @@ def checkout(skus):
     # Calculate Checkout
     for key, quant in item_dict.items():
         if key == "A":
-            sum += (quant // 5) * 200 + ((quant % 5) // 3)*130 ((quant % 5) % 3) * 50
+            sum += (quant // 5) * 200 + ((quant % 5) // 3)*130 + ((quant % 5) % 3) * 50
         elif key == "B":
             sum += (quant // 2) * 45 + (quant % 2) * 30
         elif key == "C":
@@ -38,6 +36,10 @@ def checkout(skus):
             sum += quant * 40
 
     return sum
+
+
+print(checkout("ABBCDE"))
+
 
 
 
