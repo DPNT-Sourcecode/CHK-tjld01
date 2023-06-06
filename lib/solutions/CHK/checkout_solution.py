@@ -109,7 +109,7 @@ prices ={
     "U":{
         "price": 40,
         "special_offer":[
-            {"quant": 3, "free_item": "U"}
+            {"quant": 4, "free_item": "U"}
         ]
     },
     "V":{
@@ -163,7 +163,7 @@ def checkout(skus):
             offer_quant = offer.get("quant",0)
             sku_free_item = offer.get("free_item", None)
 
-            if "free_item" in offer:
+            if quant >= offer_quant and "free_item" in offer:
                 free_items = quant // offer_quant
                 diff = sku_dict[sku_free_item] - free_items
                 free_items_to_substract = free_items if diff >= 0 else 0
@@ -192,7 +192,8 @@ def checkout(skus):
 
     return total_price
 
-print(checkout("FF"))
+print(checkout("UUU"))
+
 
 
 
