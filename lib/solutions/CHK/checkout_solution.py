@@ -157,11 +157,12 @@ def checkout(skus):
         special_offer = prices[sku]["special_offer"]
 
         for offer in special_offer:
-            quant = sku_dict[sku]
-            offer_quant = offer.get("quant",0)
-            offer_price = offer.get("price",0)
-            sku_free_item = offer.get("free_item", None)
-
+            if "free_item" in offer:
+                quant = sku_dict[sku]
+                offer_quant = offer.get("quant",0)
+                diff = sku_dict[sku_free_item] - free_items
+                free_items_to_substract = free_items if diff > 0 else 0
+                sku_dict[sku_free_item] -= free_items_to_substract
 
         # Check if there is any special offer applicable
         for offer in special_offer:
@@ -175,15 +176,16 @@ def checkout(skus):
                 if offer_total_price > 0:
                     sku_dict[sku] -= offer_quant * (quant//offer_quant)
                     total_price += offer_total_price
-                if sku_free_item in sku_dict:
-                    free_items = quant // offer_quant
-                    diff = sku_dict[sku_free_item] - free_items
-                    free_items_to_substract = free_items if diff > 0 else 0
-                    sku_dict[sku_free_item] -= free_items_to_substract
-                    total_price -= free_items_to_substract*prices[sku_free_item]["price"]
+                # if sku_free_item in sku_dict:
+                #     free_items = quant // offer_quant
+                #     diff = sku_dict[sku_free_item] - free_items
+                #     free_items_to_substract = free_items if diff > 0 else 0
+                #     sku_dict[sku_free_item] -= free_items_to_substract
+                #     total_price -= free_items_to_substract*prices[sku_free_item]["price"]
 
         total_price += sku_dict[sku] * price
 
     return total_price
 
 print(checkout("BEBEEE"))
+
