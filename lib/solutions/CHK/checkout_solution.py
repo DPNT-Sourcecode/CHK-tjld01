@@ -12,6 +12,8 @@ def checkout(skus):
     if item_dict.get("E",0) >= 2 and item_dict.get("B",0) > 0:
         to_reduce = item_dict["E"]//2
         item_dict["B"] = item_dict["B"] - to_reduce if to_reduce <= item_dict["B"] else 0
+    if item_dict.get("F",0) >= 3:
+        to_reduce = item_dict["F"]//3
 
     # Calculate Checkout
     for item, quant in item_dict.items():
@@ -25,9 +27,13 @@ def checkout(skus):
             sum += quant * 15
         elif item == "E":
             sum += quant * 40
-        elif 
+        elif item == "F":
+            sum += quant*10
 
     return sum
+
+print(checkout("FFFFFFF"))
+
 
 
 
