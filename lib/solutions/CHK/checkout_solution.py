@@ -1,10 +1,13 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
+
+import re
 def checkout(skus):
     sum = 0
     item_dict = {}
     for item in skus:
-        if item not in "ABCDEF":
+        item_exist = re.match(r"[A-Z]", item)
+        if not item_exist:
             return -1
         item_dict[item] = item_dict.get(item, 0) + 1
 
@@ -33,4 +36,5 @@ def checkout(skus):
             sum += quant * 10
 
     return sum
+
 
