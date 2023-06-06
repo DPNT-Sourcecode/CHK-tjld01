@@ -140,7 +140,6 @@ prices ={
 
 def checkout(skus):
     sku_dict = {}
-    bundle_dict = {}
     total_price = 0
     sku_pattern = r"[A-Z]"
 
@@ -187,17 +186,8 @@ def checkout(skus):
                 if offer_total_price > 0:
                     sku_dict[sku] -= offer_quant * (quant//offer_quant)
                     total_price += offer_total_price
-                # Check if there is any bundle applicable
-                if sku_dict[sku] > 0 and "bundle" in offer:
-                    bundle = offer["bundle"]
-                    bundle_quant = sku_dict[sku]
-                    for bundle_sku in bundle:
-                        bundle_quant += sku_dict.get(bundle_sku,0)
-
-
-
-
         total_price += sku_dict[sku] * price
 
     return total_price
+
 
