@@ -28,13 +28,13 @@ prices ={
     "E": {
         "price": 40,
         "special_offer":[
-            {"quant": 2, "free_item": "B"}
+            {"quant": 2, "free_sku": "B"}
         ]
     },
     "F": {
         "price": 10,
         "special_offer":[
-            {"quant": 2, "free_item": "F"}
+            {"quant": 2, "free_sku": "F"}
         ]
     },
     "G":{
@@ -73,7 +73,7 @@ prices ={
     "N":{
         "price": 40,
         "special_offer":[
-            {"quant": 3, "free_item": "M"}
+            {"quant": 3, "free_sku": "M"}
         ]
     },
     "O":{
@@ -95,7 +95,7 @@ prices ={
     "R":{
         "price": 50,
         "special_offer":[
-            {"quant": 3, "free_item": "Q"}
+            {"quant": 3, "free_sku": "Q"}
         ]
     },
     "S":{
@@ -109,7 +109,7 @@ prices ={
     "U":{
         "price": 40,
         "special_offer":[
-            {"quant": 3, "free_item": "U"}
+            {"quant": 3, "free_sku": "U"}
         ]
     },
     "V":{
@@ -139,31 +139,38 @@ prices ={
 
 
 def checkout(skus):
-    item_dict = {}
+    sku_dict = {}
     total_price = 0
     sku_pattern = r"[A-Z]"
 
-    # Count occurenses of each item
-    for item in skus:
-        item_exist = re.match(sku_pattern, item)
-        if not item_exist:
+    # Count occurenses of each sku
+    for sku in skus:
+        sku_exist = re.match(sku_pattern, sku)
+        if not sku_exist:
             return -1
-        item_dict[item] = item_dict.get(item, 0) + 1
+        sku_dict[sku] = sku_dict.get(sku, 0) + 1
 
     # Calculate total price based on prices and special offers
-    for item, quant in item_dict.items():
-        if item == "A":
-            total_price += (quant // 5) * 200 + ((quant % 5) // 3)*130 + ((quant % 5) % 3) * 50
-        elif item == "B":
-            total_price += (quant // 2) * 45 + (quant % 2) * 30
-        elif item == "C":
-            total_price += quant * 20
-        elif item == "D":
-            total_price += quant * 15
-        elif item == "E":
-            total_price += quant * 40
-        elif item == "F":
-            total_price += quant * 10
+    for sku, quant in sku_dict.items():
+
+        price = prices[sku]["price"]
+        special_offer = prices[sku]["special_offer"]
+
+        # Check if there is any special offer applicable
+        for offer in special_offer:
+            offer_quant = 
+        # if sku == "A":
+        #     total_price += (quant // 5) * 200 + ((quant % 5) // 3)*130 + ((quant % 5) % 3) * 50
+        # elif sku == "B":
+        #     total_price += (quant // 2) * 45 + (quant % 2) * 30
+        # elif sku == "C":
+        #     total_price += quant * 20
+        # elif sku == "D":
+        #     total_price += quant * 15
+        # elif sku == "E":
+        #     total_price += quant * 40
+        # elif sku == "F":
+        #     total_price += quant * 10
 
 
     return total_price
@@ -171,11 +178,3 @@ def checkout(skus):
 
 
 print(checkout("AAAAA"))
-
-
-
-
-
-
-
-
