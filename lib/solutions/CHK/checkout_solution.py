@@ -142,6 +142,7 @@ def checkout(skus):
     sku_dict = {}
     total_price = 0
     sku_pattern = r"[A-Z]"
+    sku_bundles = ["STXYZ"]
 
     # Count occurenses of each sku
     for sku in skus:
@@ -169,8 +170,11 @@ def checkout(skus):
                     sku_dict[sku_free_item] -= free_items_to_substract
 
 
+    for sku_bundle in sku_bundles:
+        for sku in sku_bundle:
 
-    # Calculate total price with bundles considered
+
+    # Calculate total price for each sku considering offers
     for sku in sku_dict:
         price = prices[sku]["price"]
         special_offer = prices[sku]["special_offer"]
@@ -189,5 +193,6 @@ def checkout(skus):
         total_price += sku_dict[sku] * price
 
     return total_price
+
 
 
