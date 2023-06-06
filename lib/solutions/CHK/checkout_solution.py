@@ -17,6 +17,17 @@ def checkout(skus):
         elif item == "D":
             item_dict["D"] = item_dict.get("D", 0) + 1
 
-    
+    for key, value in item_dict.items():
+        if key == "A":
+            sum += (value // 3) * 130 + (value % 3) * 50
+        elif key == "B":
+            sum += (value // 2) * 45 + (value % 2) * 30
+        elif key == "C":
+            sum += value * 20
+        elif key == "D":
+            sum += value * 15
+
+    return sum
+
 
 
