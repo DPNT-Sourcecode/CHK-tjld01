@@ -38,8 +38,6 @@ def checkout(skus):
     return sum
 
 
-print(checkout("ABBCDE"))
-
 
 
 
