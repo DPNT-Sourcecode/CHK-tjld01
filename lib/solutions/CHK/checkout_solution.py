@@ -198,9 +198,8 @@ def checkout(skus):
             print(sku_dict)
             if sku in sku_dict and bundle_quant >= 3 :
                 bundle_quant -= ((sku_dict[sku]-bundle_offer_quant)%3)
-                print(bundle_quant)
-                bundle_offer_quant += sku_dict[sku]
-                sku_dict[sku] = 0
+                bundle_offer_quant += bundle_quant
+                sku_dict[sku] -= bundle_quant
             total_price += (bundle_offer_quant//3) * price
 
 
@@ -226,6 +225,7 @@ def checkout(skus):
     return total_price
 
 print(checkout("SSSZ"))
+
 
 
 
