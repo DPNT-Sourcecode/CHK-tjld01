@@ -2,11 +2,19 @@
 # skus = unicode string
 
 import re
+
+prices ={
+    "A":{
+        "price": 50,
+        "special_offer"
+    }
+}
+
+item_dict = {}
+pattern = r"[A-Z]"
 def checkout(skus):
-    sum = 0
-    item_dict = {}
     for item in skus:
-        item_exist = re.match(r"[A-Z]", item)
+        item_exist = re.match(pattern, item)
         if not item_exist:
             return -1
         item_dict[item] = item_dict.get(item, 0) + 1
