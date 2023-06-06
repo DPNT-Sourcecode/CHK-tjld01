@@ -188,7 +188,8 @@ def checkout(skus):
 
     return total_price
 
-print(checkout("EE"))
+print(checkout("FF"))
+
 
 
 
