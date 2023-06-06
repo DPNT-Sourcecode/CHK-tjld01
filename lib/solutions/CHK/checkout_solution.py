@@ -189,7 +189,7 @@ def checkout(skus):
 
         sorted_bundle_dict = dict(sorted(bundle_dict.items(), key=lambda x: x[1]["price"], reverse=True))
         bundle_quant = sum(item['quant'] for item in sorted_bundle_dict.values())
-        bundle_offer_quant = 0
+        remaining = 0
         sku_it = iter(sorted_bundle_dict)
         while True:
             sku = next(sku_it, None)
@@ -197,11 +197,11 @@ def checkout(skus):
                 break
             print(sku_dict)
             if sku in sku_dict:
-                to_reduce = 
-                bundle_quant -= to_reduce
-                bundle_offer_quant += bundle_quant
+                bundles = bundle_quant // 3
+                remaing = 
+                to_reduce = bundle_quant % 3
                 sku_dict[sku] -= to_reduce
-            total_price += (bundle_offer_quant//3) * price
+            total_price += bundles * price
 
 
 
@@ -226,4 +226,5 @@ def checkout(skus):
     return total_price
 
 print(checkout("SSSZ"))
+
 
