@@ -188,15 +188,14 @@ def checkout(skus):
                     total_price += offer_total_price
                 # Check if there is any bundle applicable
                 if sku_dict[sku] > 0 and "bundle" in offer:
+                    bundle = offer["bundle"]
+                    bundle_quant = sku_dict[sku]
+                    for bundle_sku in bundle:
+                        bundle_quant += sku_dict.get(bundle_sku,0)
                     
+
 
 
         total_price += sku_dict[sku] * price
 
     return total_price
-
-
-
-
-
-
