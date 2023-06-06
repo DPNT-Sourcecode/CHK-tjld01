@@ -192,7 +192,7 @@ def checkout(skus):
         bundles = bundle_quant // 3
         to_reduce = 0
         sku_it = iter(sorted_bundle_dict)
-        while True and bundles > 0:
+        while True:
             sku = next(sku_it, None)
             if sku is None:
                 break
@@ -226,7 +226,8 @@ def checkout(skus):
 
     return total_price
 
-print(checkout("S"))
+print(checkout("STX"))
+
 
 
 
