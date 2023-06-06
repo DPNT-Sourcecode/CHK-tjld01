@@ -70,7 +70,38 @@ prices ={
         "special_offer":[]
     },
     "N":{
-        "price"
+        "price": 40,
+        "special_offer":[
+            {"quant": 3, "free_item": "M"}
+        ]
+    },
+    "O":{
+        "price": 10,
+        "special_offer":[]
+    },
+    "P":{
+        "price": 50,
+        "special_offer":[
+            {"quant": 5, "price":200}
+        ]
+    },
+    "Q":{
+        "price": 30,
+        "special_offer":[
+            {"quant": 3, "price":80}
+    },
+    "R":{
+        "price": 50,
+        "special_offer":[
+            {"quant": 3, "free_item": "Q"}
+        ]
+    },
+    "S":{
+        "price": 30,
+        "special_offer":[]
+    },
+    
+
     }
 }
 
@@ -108,6 +139,7 @@ def checkout(skus):
             sum += quant * 10
 
     return sum
+
 
 
 
