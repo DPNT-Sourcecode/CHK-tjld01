@@ -188,15 +188,9 @@ def checkout(skus):
             }
         sorted_bundle_dict = dict(sorted(bundle_dict.items(), key=lambda x: x[1]["price"], reverse=True))
         bundle_quant = sum(item['quant'] for item in my_dict.values())
-        for sku in sorted_bundle_dict:
-            quant = sku_dict[sku]
-            price = sorted_bundle_dict[sku]["price"]
-            bundle_quant -= quant
-            if bundle_quant >= 0:
-                total_price += quant * price
-            else:
-                total_price += (quant + bundle_quant) * price
-                break
+        sku_it = next(iter(my_dict))
+        while (bundle_quant // 3 > 1):
+
 
 
 
@@ -223,4 +217,5 @@ def checkout(skus):
     return total_price
 
 print(checkout("STXYZ"))
+
 
