@@ -168,7 +168,7 @@ def checkout(skus):
                 if free_items_to_substract > 0:
                     sku_dict[sku_free_item] -= free_items_to_substract
 
-    # Check offers for bundles
+    # Check offers for bundles same items
     for sku in sku_dict:
         price = prices[sku]["price"]
         special_offer = prices[sku]["special_offer"]
@@ -184,13 +184,12 @@ def checkout(skus):
                 if offer_total_price > 0:
                     sku_dict[sku] -= offer_quant * (quant//offer_quant)
                     total_price += offer_total_price
-                elif "bundle" in offer:
-                    sku_bundle_1 =
 
 
         total_price += sku_dict[sku] * price
 
     return total_price
+
 
 
 
