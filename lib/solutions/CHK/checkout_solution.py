@@ -100,11 +100,11 @@ prices ={
     },
     "S":{
         "price": 30,
-        "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXYZ"}
+        "special_offer":{"quant": 3, "price": 45 ,"bundle": "TXYZ"}
     },
     "T":{
         "price": 20,
-        "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXYZ"}
+        "special_offer":{"quant": 3, "price": 45 ,"bundle": "SXYZ"}
     },
     "U":{
         "price": 40,
@@ -125,15 +125,15 @@ prices ={
     },
     "X":{
         "price": 90,
-        "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXYZ"}
+        "special_offer":{"quant": 3, "price": 45 ,"bundle": "STYZ"}
     },
     "Y":{
         "price": 10,
-        "special_offer":[]
+        "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXZ"}
     },
     "Z":{
         "price": 50,
-        "special_offer":[]
+        "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXY"}
     }
 }
 
@@ -150,6 +150,7 @@ def checkout(skus):
             return -1
         sku_dict[sku] = sku_dict.get(sku, 0) + 1
 
+    # Check offers for free items
     for sku in sku_dict:
 
         price = prices[sku]["price"]
@@ -167,8 +168,8 @@ def checkout(skus):
                 if free_items_to_substract > 0:
                     sku_dict[sku_free_item] -= free_items_to_substract
 
+    # Check offers for bundles
     for sku in sku_dict:
-
         price = prices[sku]["price"]
         special_offer = prices[sku]["special_offer"]
 
@@ -183,10 +184,14 @@ def checkout(skus):
                 if offer_total_price > 0:
                     sku_dict[sku] -= offer_quant * (quant//offer_quant)
                     total_price += offer_total_price
+                elif "bundle" in offer:
+                    sku_bundle_1 =
+
 
         total_price += sku_dict[sku] * price
 
     return total_price
+
 
 
 
