@@ -28,13 +28,13 @@ prices ={
     "E": {
         "price": 40,
         "special_offer":[
-            {"quant": 2, "free_sku": "B"}
+            {"quant": 2, "free_item": "B"}
         ]
     },
     "F": {
         "price": 10,
         "special_offer":[
-            {"quant": 2, "free_sku": "F"}
+            {"quant": 2, "free_item": "F"}
         ]
     },
     "G":{
@@ -73,7 +73,7 @@ prices ={
     "N":{
         "price": 40,
         "special_offer":[
-            {"quant": 3, "free_sku": "M"}
+            {"quant": 3, "free_item": "M"}
         ]
     },
     "O":{
@@ -95,7 +95,7 @@ prices ={
     "R":{
         "price": 50,
         "special_offer":[
-            {"quant": 3, "free_sku": "Q"}
+            {"quant": 3, "free_item": "Q"}
         ]
     },
     "S":{
@@ -109,7 +109,7 @@ prices ={
     "U":{
         "price": 40,
         "special_offer":[
-            {"quant": 3, "free_sku": "U"}
+            {"quant": 3, "free_item": "U"}
         ]
     },
     "V":{
@@ -158,7 +158,12 @@ def checkout(skus):
 
         # Check if there is any special offer applicable
         for offer in special_offer:
-            offer_quant = 
+            offer_quant = offer.get("quant",0)
+            offer_price = offer.get("price",0)
+            free_item = offer.get("free_item", None)
+
+            if offer_quant > 0:
+                offer
         # if sku == "A":
         #     total_price += (quant // 5) * 200 + ((quant % 5) // 3)*130 + ((quant % 5) % 3) * 50
         # elif sku == "B":
@@ -178,3 +183,4 @@ def checkout(skus):
 
 
 print(checkout("AAAAA"))
+
