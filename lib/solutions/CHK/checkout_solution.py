@@ -100,11 +100,11 @@ prices ={
     },
     "S":{
         "price": 30,
-        "special_offer":{"quant": 3, "price": 45 ,"bundle": "TXYZ"}
+        "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXYZ"}
     },
     "T":{
         "price": 20,
-        "special_offer":{"quant": 3, "price": 45 ,"bundle": "SXYZ"}
+        "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXYZ"}
     },
     "U":{
         "price": 40,
@@ -125,21 +125,22 @@ prices ={
     },
     "X":{
         "price": 90,
-        "special_offer":{"quant": 3, "price": 45 ,"bundle": "STYZ"}
+        "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXYZ"}
     },
     "Y":{
         "price": 10,
-        "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXZ"}
+        "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXYZ"}
     },
     "Z":{
         "price": 50,
-        "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXY"}
+        "special_offer":{"quant": 3, "price": 45 ,"bundle": "STXYZ"}
     }
 }
 
 
 def checkout(skus):
     sku_dict = {}
+    bundle_dict = {}
     total_price = 0
     sku_pattern = r"[A-Z]"
 
@@ -192,10 +193,11 @@ def checkout(skus):
                     bundle_quant = sku_dict[sku]
                     for bundle_sku in bundle:
                         bundle_quant += sku_dict.get(bundle_sku,0)
-                    
+
 
 
 
         total_price += sku_dict[sku] * price
 
     return total_price
+
